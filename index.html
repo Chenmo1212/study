@@ -1,0 +1,539 @@
+<!--
+@Auther: Chenmo
+@fileName: 青年大学习
+@date on 2019/6/12 19:23
+@describe: 可自定义背景，头像，网名以及第几季第几期
+@QQ: 160594753
+ -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0">  -->
+    <title>青年大学习</title>
+    <style media="screen">
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            position: relative;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        input,
+        textarea {
+            border: none;
+            background: none;
+        }
+        /*背景图*/
+        
+        #bg-pre {
+            background: #000 url(http://suo.im/4w50LE) no-repeat center;
+            background-size: cover;
+            display: inline-block;
+            height: 720px;
+            width: 100%;
+        }
+        
+        #bg-ipt {
+            display: inline-block;
+            /*让输入框转为块级元素，否则不能设置宽高*/
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            /*让输入框高一点*/
+            opacity: 0;
+            /*透明度为0*/
+        }
+        /*大网名*/
+        
+        .name-b {
+            font-size: 44px;
+            position: absolute;
+            top: 640px;
+            right: 280px;
+            color: #fff;
+            width: 600px;
+            text-align: right;
+        }
+        /*头像*/
+        
+        #avatar-pre-b {
+            background: #000 url(http://suo.im/5mIw26) no-repeat center;
+            background-size: cover;
+            height: 200px;
+            width: 200px;
+            border-radius: 10px;
+            position: absolute;
+            right: 50px;
+            margin-top: -100px;
+            box-shadow: 0 0 5px #fff;
+        }
+        
+        #ava-ipt-b,
+        #ava-ipt-s {
+            opacity: 0;
+            display: inline-block;
+            height: 100%;
+            width: 100%;
+        }
+        /*mid begin*/
+        
+        .mid {
+            margin-top: 180px;
+        }
+        
+        .line {
+            width: 90%;
+            margin-left: 5%;
+            height: 1px;
+            background-color: #000;
+        }
+        
+        .mid span {
+            display: inline-block;
+            font-size: 36px;
+            padding: 40px 0 40px 150px;
+        }
+        /*body*/
+        
+        .body {
+            margin-top: 50px;
+            margin-left: 150px;
+        }
+        
+        .body .name-s {
+            font-size: 36px;
+            margin-bottom: 25px;
+        }
+        
+        .body textarea {
+            font-size: 34px;
+            letter-spacing: 2px;
+            height: 160px;
+            line-height: 40px;
+            width: 750px;
+            background: none;
+            z-index: 1000;
+            overflow: hidden;
+        }
+        /*小头像*/
+        
+        #avatar-pre-s {
+            background: #000 url(http://suo.im/5mIw26) no-repeat center;
+            background-size: cover;
+            background-color: #ddd;
+            height: 100px;
+            width: 100px;
+            border-radius: 10px;
+            position: absolute;
+            left: 30px;
+        }
+        /*推送*/
+        
+        .article {
+            margin-top: 50px;
+        }
+        /*封面*/
+        
+        .article .cover {
+            background: #ddd url(http://suo.im/4DBi5T) no-repeat top;
+            background-size: cover;
+            height: 110px;
+            width: 110px;
+            background-size: cover;
+            position: absolute;
+        }
+        
+        .article .content {
+            background-color: #eee;
+            height: 110px;
+            width: 670px;
+            margin-left: 130px;
+        }
+        
+        .article textarea {
+            margin-left: 10px;
+            line-height: 55px;
+            font-size: 28px;
+            width: 650px;
+            height: 110px;
+        }
+        
+        .delete {
+            font-size: 30px;
+            border: none;
+            margin-top: 20px;
+        }
+        
+        .delete i {
+            font-style: normal;
+            color: blue;
+        }
+        
+        .point {
+            position: absolute;
+            right: 50px;
+            margin-top: -40px;
+            background-color: #eee;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+        
+        .point span {
+            display: inline-block;
+            height: 10px;
+            width: 10px;
+            background-color: #bbb;
+            border-radius: 50%;
+        }
+        
+        .modal {
+            position: absolute;
+            width: 100vw;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+        
+        .zhezhao {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            background: #000;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5;
+        }
+        
+        .tankuang {
+            position: relative;
+            background: #fff;
+            width: 70%;
+            height: auto;
+            min-height: 500px;
+            border-radius: 5px;
+            margin: 50% auto;
+            padding-bottom: 100px;
+        }
+        
+        .modal #header {
+            height: 80px;
+            font-size: 42px;
+            text-align: center;
+            padding-top: 30px;
+        }
+        
+        .modal #header-right {
+            position: absolute;
+            width: 250px;
+            height: 80px;
+            line-height: 80px;
+            border-radius: 5px;
+            background: #e7e9ef;
+            color: #444;
+            bottom: 20px;
+            font-size: 32px;
+            left: 50%;
+            text-align: center;
+            margin-left: -100px;
+        }
+        
+        .modal .content {
+            font-size: 34px;
+            padding: 0px 30px 0 80px;
+        }
+        
+        ol>li {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- header begin -->
+        <div class="header">
+            <!-- 背景 -->
+            <div class="bg-img" id="bg-pre">
+                <!-- accept: 可以接受gif,jpeg,png,jpg的格式 -->
+                <input type="file" name="bg" id="bg-ipt" value="" accept="image/gif, image/jpeg, image/png, image/jpg">
+            </div>
+            <!-- 大头像 -->
+            <input type="text" name="大网名" value="余生少年" class="name name-b" id='nickName-b'>
+            <div id="avatar-pre-b">
+                <input type="file" name="avatar-b" id="ava-ipt-b" value="" accept="image/gif, image/jpeg, image/png, image/jpg">
+            </div>
+        </div>
+
+        <!-- mid begin -->
+        <div class="mid">
+            <div class="line line1"></div>
+            <span class="new" id="longPress">朋友的新动态</span>
+            <div class="line line2"></div>
+        </div>
+
+        <div class="body">
+            <!-- 小头像 -->
+            <div id="avatar-pre-s">
+                <input type="file" name="avatar-s" id="ava-ipt-s" value="" accept="image/gif, image/jpeg, image/png, image/jpg">
+            </div>
+            <!-- 内容 -->
+            <input type="text" name="" value="余生少年" class="name name-s" id='nickName-s'>
+            <div class="tit">
+                <textarea rows="4" cols="" id="mainContent">XXXX学院 &#10;XXXXXXX-XX XXXX &#10;已完成“青年大学习”网上主题团课第五季第八期的课程</textarea>
+            </div>
+
+            <div class="article">
+                <div class="cover"></div>
+                <div class="content">
+                    <textarea rows="4" cols="" id="detailContent">我完成了“青年大学习”网上主题团课第五季第八期的课程，你也来试试吧</textarea>
+                </div>
+            </div>
+
+            <p class="delete" onclick="alert('我删除你个头')">1分钟前 &nbsp;<i>删除</i></p>
+
+            <div class="point">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!-- 模式框 -->
+    <div class="modal" id='modal'>
+        <div class="zhezhao"></div>
+        <div class="tankuang">
+            <div id="header">
+                <span>说明</span>
+            </div>
+            <div class="content">
+                <ol>
+                    <li>本网站是为了懒人们服务的，由于学校经常需要共青团学习的截图，因此，随手做了一个网站，方便大家使用.</li>
+                    <li>该网站的背景图和头像是随机生成的，并且支持手机相册上传！</li>
+                    <li>网站内所有的文字均支持更改！</li>
+                    <li>网站支持本地保存，相册上传的图片和更改的文字将会在本地保存！</li>
+                    <li>点击“朋友的新动态”即可清除本地缓存</li>
+                </ol>
+            </div>
+            <div id="header-right" onclick="hidder()">我知道了</div>
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript">
+    // 根据id获取元素
+    function my$(id) {
+        return document.getElementById(id);
+    }
+
+    // 设置背景图片
+    function setBg(e, src) {
+        var imgSrc = src;
+        e.style.backgroundImage = 'url(' + imgSrc + ')';
+    }
+
+    // 定义输入框内容更改事件
+    function setChange(e1, e2) {
+        e1.onchange = function() {
+            // 获取图片
+            console.log(e1.files[0]);
+            console.log(e2.id);
+            var file = e1.files[0];
+            // 判断输入的是否是图片，不是图片则输出提示
+            // console.log(file.type);
+            // 只要输出结果有image，则为图片
+            // console.log(file.type.indexOf("image"));
+            if (file.type.indexOf("image") >= 0) {
+                // console.log("是图片");
+                // 是图片之后将图片转换成base64格式预览
+                var reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = function(e) {
+                    var newUrl = this.result;
+                    e2.style.backgroundImage = 'url(' + newUrl + ')';
+                    if (e1.id === 'bg-ipt') {
+                        localStorage.bgUrl = newUrl;
+                    } else {
+                        bgPreBig.style.backgroundImage = 'url(' + newUrl + ')';
+                        bgPreSmall.style.backgroundImage = 'url(' + newUrl + ')';
+                        localStorage.avatarUrl = newUrl;
+                    }
+                }
+            } else {
+                // console.log("不是图片");
+                alert("您选择的不是图片，请重试！")
+            }
+        }
+    }
+
+    // 存储数据
+    function storageData() {
+        localStorage.mainContent = mainContent.value;
+        localStorage.detailContent = detailContent.value;
+        localStorage.nickNameB = nickNameB.value;
+        // console.log(localStorage.detailContent);
+        // console.log(localStorage.mainContent);
+    }
+
+    function hidder() {
+        document.getElementById('modal').style.display = "none";
+        // console.log("1232131231")
+    }
+
+    /**
+     * 绑定长按事件，同时支持绑定点击事件
+     * @param {dom} dom 需要绑定的dom元素
+     * @param {fn} longPressCallBack 长按事件执行的方法
+     * @param {fn} touchCallBack 点击事件执行的方法
+     */
+    var longPress = function(dom, longPressCallBack, touchCallBack) {
+        var timer = undefined;
+        var isLongPress = false;
+
+        var setEvent = function(e) {
+            e.addEventListener('touchstart', function(event) {
+                timer = setTimeout(function() {
+                    isLongPress = true
+                    longPressCallBack && longPressCallBack(e);
+                }, 500);
+            }, false);
+
+            e.addEventListener('touchmove', function(event) {
+                clearTimeout(timer);
+            }, false);
+
+            e.addEventListener('touchend', function(event) {
+                if (!isLongPress) touchCallBack && touchCallBack()
+                clearTimeout(timer);
+                isLongPress = false;
+            }, false);
+        }
+
+        if (dom.length) {
+            // 支持绑定多个元素
+            for (var i = 0; i < dom.length; i++) {
+                setEvent(dom[i])
+            }
+        } else {
+            setEvent(dom)
+        }
+    }
+
+    longPress(document.getElementById('longPress'), function() {
+        console.log('longPress');
+        localStorage.clear();
+        alert("缓存清空成功");
+        location.reload();
+    }, function() {
+        console.log('touch');
+        // localStorage.clear();
+        alert("长按可清空缓存");
+    });
+
+    [...document.querySelectorAll('.longPress')].forEach(function(e, i) {
+        longPress(e, function() {
+            console.log('longPress');
+            localStorage.clear();
+            location.reload();
+            alert("缓存清空成功");
+        }, function() {
+            console.log('touch');
+            //   localStorage.clear();
+            alert("长按可清空缓存");
+        });
+    });
+
+
+    // 随机背景图
+    var bgSrc = 'http://pic.tsmp4.net/api/fengjing/img.php' // 随机图片api
+    var avatarSrc = 'https://source.unsplash.com/random/500x500'
+        // 背景图
+    var bgFile = my$("bg-ipt");
+    var bgPre = my$("bg-pre");
+    // 大头像
+    var avatarFileBig = my$("ava-ipt-b");
+    var bgPreBig = my$("avatar-pre-b");
+    // 小头像
+    var avatarFileSmall = my$("ava-ipt-s");
+    var bgPreSmall = my$("avatar-pre-s");
+    // 文本框
+    var mainContent = my$("mainContent");
+    var detailContent = my$("detailContent");
+    var nickNameB = my$("nickName-b");
+    var nickNameS = my$("nickName-s");
+    // 新动态
+    var clear = my$("clear");
+
+    // 主内容变动
+    mainContent.onchange = function() {
+            storageData();
+        }
+        // 详细内容变动
+    detailContent.onchange = function() {
+            storageData();
+        }
+        // 昵称变动
+    nickNameB.onchange = function() {
+        // console.log(nickNameB.value);
+        nickNameS.value = nickNameB.value;
+        storageData();
+    }
+    nickNameS.onchange = function() {
+            // console.log(nickNameS.value);
+            nickNameB.value = nickNameS.value;
+            storageData();
+        }
+        // // 默认随机背景
+        // setBg(bgPre, bgSrc);
+        // setBg(bgPreBig, avatarSrc);
+        // setBg(bgPreSmall, avatarSrc);
+        // 设置背景
+    setChange(bgFile, bgPre);
+    // 设置头像
+    setChange(avatarFileBig, bgPreBig);
+    setChange(avatarFileSmall, bgPreSmall);
+
+    //清空缓存
+    // localStorage.clear();
+
+    // 判断是否有数据
+    if (localStorage.mainContent && localStorage.detailContent) {
+        // 如果本地有数据
+        // console.log(localStorage.mainContent);
+        // console.log(localStorage.detailContent);
+        mainContent.value = localStorage.mainContent;
+        detailContent.value = localStorage.detailContent;
+    } else {
+        // 如果本地没有数据
+        mainContent.value = 'XXXX学院 \nXXXXXXX-XX XXXX \n已完成“青年大学习”网上主题团课第五季第八期的课程';
+        detailContent.value = '我完成了“青年大学习”网上主题团课第五季第八期的课程，你也来试试吧';
+    }
+    //本地是否有背景图的数据
+    if (localStorage.bgUrl) {
+        // console.log(localStorage.bgUrl);
+        bgPre.style.backgroundImage = 'url(' + localStorage.bgUrl + ')';
+    } else {
+        setBg(bgPre, bgSrc);
+    }
+    //本地是否有头像的数据
+    if (localStorage.avatarUrl) {
+        bgPreBig.style.backgroundImage = 'url(' + localStorage.avatarUrl + ')';
+        bgPreSmall.style.backgroundImage = 'url(' + localStorage.avatarUrl + ')';
+    } else {
+        setBg(bgPreBig, avatarSrc);
+        setBg(bgPreSmall, avatarSrc);
+    }
+    // 本地是否有网名的数据
+    if (localStorage.nickNameB) {
+        nickNameB.value = localStorage.nickNameB;
+        nickNameS.value = localStorage.nickNameB;
+    }
+</script>
+
+</html>
