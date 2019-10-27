@@ -1,0 +1,255 @@
+html,
+body {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+input,
+textarea {
+    border: none;
+    background: none;
+}
+
+
+/*背景图*/
+
+#bg-pre {
+    background: #000 url(http://suo.im/4w50LE) no-repeat center;
+    background-size: cover;
+    display: inline-block;
+    height: 720px;
+    width: 100%;
+}
+
+#bg-ipt {
+    display: inline-block;
+    /*让输入框转为块级元素，否则不能设置宽高*/
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    /*让输入框高一点*/
+    opacity: 0;
+    /*透明度为0*/
+}
+
+
+/*大网名*/
+
+.name-b {
+    font-size: 44px;
+    position: absolute;
+    top: 640px;
+    right: 280px;
+    color: #fff;
+    width: 600px;
+    text-align: right;
+}
+
+
+/*头像*/
+
+#avatar-pre-b {
+    background: #000 url(http://suo.im/5mIw26) no-repeat center;
+    background-size: cover;
+    height: 200px;
+    width: 200px;
+    border-radius: 10px;
+    position: absolute;
+    right: 50px;
+    margin-top: -100px;
+    box-shadow: 0 0 5px #fff;
+}
+
+#ava-ipt-b,
+#ava-ipt-s {
+    opacity: 0;
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+}
+
+
+/*mid begin*/
+
+.mid {
+    margin-top: 180px;
+}
+
+.line {
+    width: 90%;
+    margin-left: 5%;
+    height: 1px;
+    background-color: #000;
+}
+
+.mid span {
+    display: inline-block;
+    font-size: 36px;
+    padding: 40px 0 40px 150px;
+}
+
+
+/*body*/
+
+.body {
+    margin-top: 50px;
+    margin-left: 150px;
+}
+
+.body .name-s {
+    font-size: 36px;
+    margin-bottom: 25px;
+}
+
+.body textarea {
+    font-size: 34px;
+    letter-spacing: 2px;
+    height: 160px;
+    line-height: 40px;
+    width: 750px;
+    background: none;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+
+/*小头像*/
+
+#avatar-pre-s {
+    background: #000 url(http://suo.im/5mIw26) no-repeat center;
+    background-size: cover;
+    background-color: #ddd;
+    height: 100px;
+    width: 100px;
+    border-radius: 10px;
+    position: absolute;
+    left: 30px;
+}
+
+
+/*推送*/
+
+.article {
+    margin-top: 50px;
+}
+
+
+/*封面*/
+
+.article .cover {
+    background: #ddd url(http://suo.im/4DBi5T) no-repeat top;
+    background-size: cover;
+    height: 110px;
+    width: 110px;
+    background-size: cover;
+    position: absolute;
+}
+
+.article .content {
+    background-color: #eee;
+    height: 110px;
+    width: 670px;
+    margin-left: 130px;
+}
+
+.article textarea {
+    margin-left: 10px;
+    line-height: 55px;
+    font-size: 28px;
+    width: 650px;
+    height: 110px;
+}
+
+.delete {
+    font-size: 30px;
+    border: none;
+    margin-top: 20px;
+}
+
+.delete i {
+    font-style: normal;
+    color: blue;
+}
+
+.point {
+    position: absolute;
+    right: 50px;
+    margin-top: -40px;
+    background-color: #eee;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+.point span {
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+    background-color: #bbb;
+    border-radius: 50%;
+}
+
+.modal {
+    position: absolute;
+    width: 100vw;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.zhezhao {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    background: #000;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+}
+
+.tankuang {
+    position: relative;
+    background: #fff;
+    width: 70%;
+    height: auto;
+    min-height: 500px;
+    border-radius: 5px;
+    margin: 50% auto;
+    padding-bottom: 100px;
+}
+
+.modal #header {
+    height: 80px;
+    font-size: 42px;
+    text-align: center;
+    padding-top: 30px;
+}
+
+.modal #header-right {
+    position: absolute;
+    width: 250px;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 5px;
+    background: #e7e9ef;
+    color: #444;
+    bottom: 20px;
+    font-size: 32px;
+    left: 50%;
+    text-align: center;
+    margin-left: -100px;
+}
+
+.modal .content {
+    font-size: 34px;
+    padding: 0px 30px 0 80px;
+}
+
+ol>li {
+    margin-top: 10px;
+}
