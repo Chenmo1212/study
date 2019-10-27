@@ -5,6 +5,12 @@ body {
     position: relative;
 }
 
+#max-control {
+    max-width: 375px;
+    max-height: 667px;
+    margin: 0 auto;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -16,11 +22,15 @@ textarea {
     background: none;
 }
 
+#picture {
+    padding-bottom: 130px;
+}
+
 
 /*背景图*/
 
 #bg-pre {
-    background: #000 url(http://suo.im/4w50LE) no-repeat center;
+    /* background: #000 url(http://suo.im/4w50LE) no-repeat center; */
     background-size: cover;
     display: inline-block;
     height: 720px;
@@ -55,7 +65,7 @@ textarea {
 /*头像*/
 
 #avatar-pre-b {
-    background: #000 url(http://suo.im/5mIw26) no-repeat center;
+    /* background: #000 url(http://suo.im/5mIw26) no-repeat center; */
     background-size: cover;
     height: 200px;
     width: 200px;
@@ -84,7 +94,7 @@ textarea {
 .line {
     width: 90%;
     margin-left: 5%;
-    height: 1px;
+    height: 2px;
     background-color: #000;
 }
 
@@ -118,11 +128,35 @@ textarea {
     overflow: hidden;
 }
 
+.tit div {
+    font-size: 34px;
+    letter-spacing: 2px;
+    line-height: 40px;
+    width: 750px;
+    background: none;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.display-none {
+    display: none;
+}
+
+
+/* .content div {
+    font-size: 34px;
+    letter-spacing: 2px;
+    line-height: 40px;
+    width: 750px;
+    background: none;
+    z-index: 1000;
+} */
+
 
 /*小头像*/
 
 #avatar-pre-s {
-    background: #000 url(http://suo.im/5mIw26) no-repeat center;
+    /* background: #000 url(http://suo.im/5mIw26) no-repeat center; */
     background-size: cover;
     background-color: #ddd;
     height: 100px;
@@ -143,12 +177,12 @@ textarea {
 /*封面*/
 
 .article .cover {
-    background: #ddd url(http://suo.im/4DBi5T) no-repeat top;
     background-size: cover;
     height: 110px;
     width: 110px;
     background-size: cover;
     position: absolute;
+    overflow: hidden;
 }
 
 .article .content {
@@ -158,7 +192,8 @@ textarea {
     margin-left: 130px;
 }
 
-.article textarea {
+.article textarea,
+.article .content div {
     margin-left: 10px;
     line-height: 55px;
     font-size: 28px;
@@ -219,7 +254,7 @@ textarea {
     height: auto;
     min-height: 500px;
     border-radius: 5px;
-    margin: 50% auto;
+    margin: 45% auto;
     padding-bottom: 100px;
 }
 
@@ -242,14 +277,45 @@ textarea {
     font-size: 32px;
     left: 50%;
     text-align: center;
-    margin-left: -100px;
+    margin-left: -125px;
 }
 
 .modal .content {
     font-size: 34px;
-    padding: 0px 30px 0 80px;
+    padding: 0px 30px 20px 80px;
 }
 
 ol>li {
     margin-top: 10px;
+}
+
+
+/* bottom  */
+
+#bottom {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 50px;
+    font-size: 32px;
+    line-height: 80px;
+}
+
+.saveBtn {
+    width: 250px;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 5px;
+    background: #e7e9ef;
+    color: #444;
+    font-size: 32px;
+    text-align: center;
+}
+
+#bottom input {
+    height: 80px;
+    font-size: 32px;
+    line-height: 80px;
+    border-bottom: 2px solid #e7e9ef;
+    outline: none;
 }

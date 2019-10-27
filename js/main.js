@@ -13,8 +13,8 @@
   function setChange(e1, e2) {
       e1.onchange = function() {
           // 获取图片
-          console.log(e1.files[0]);
-          console.log(e2.id);
+          //   console.log(e1.files[0]);
+          //   console.log(e2.id);
           var file = e1.files[0];
           // 判断输入的是否是图片，不是图片则输出提示
           // console.log(file.type);
@@ -45,9 +45,10 @@
 
   // 存储数据
   function storageData() {
-      localStorage.mainContent = mainContent.value;
-      localStorage.detailContent = detailContent.value;
+      localStorage.mainContent = mainContent_textarea.value;
+      localStorage.detailContent = detailContent_textarea.value;
       localStorage.nickNameB = nickNameB.value;
+      localStorage.fileName = fileName.value;
       // console.log(localStorage.detailContent);
       // console.log(localStorage.mainContent);
   }
@@ -56,6 +57,141 @@
       document.getElementById('modal').style.display = "none";
       // console.log("1232131231")
   }
+
+  // 保存图片到本地
+  function savePic() {
+      //   console.log(my$("canvas"));
+      if (my$("canvas")) {
+          my$("canvas").remove();
+      }
+      bottom.className = "display-none";
+      loaderBox.className = "";
+      html2canvas(my$("picture"), {
+          allowTaint: true,
+          useCORS: true,
+          scale: 1.2,
+      }).then(function(canvas) {
+          canvas.id = "canvas";
+          document.body.appendChild(canvas);
+          bottom.className = "";
+          loaderBox.className = "display-none";
+
+          var canvas = document.getElementById('canvas'); //获取要达到的dom元素
+          var x = canvas.offsetTop; //获取该dom元素的距离页面顶端的距离
+          scrollSlowly(30, 30, x);
+          showToast("图片已下载到本地", 2000);
+          downLoad(saveAsPNG(canvas));
+      });
+  }
+
+  // 网络图片转base64 —————— cover图使用的，目前是第六期（注意此处有跨域问题，去百度图片搜一个支持跨域的图片）
+  function getBase64(imgUrl, element) {
+      window.URL = window.URL || window.webkitURL;
+      var xhr = new XMLHttpRequest();
+      xhr.open("get", imgUrl, true);
+      // 至关重要
+      xhr.responseType = "blob";
+      xhr.onload = function() {
+          if (this.status == 200) {
+              //得到一个blob对象
+              var blob = this.response;
+              console.log("blob", blob)
+                  // 至关重要
+              let oFileReader = new FileReader();
+              oFileReader.onloadend = function(e) {
+                  let base64 = e.target.result;
+                  // console.log("方式一》》》》》》》》》", base64)
+              };
+              oFileReader.readAsDataURL(blob);
+              let src = window.URL.createObjectURL(blob);
+              element.src = src;
+          }
+      }
+      xhr.send();
+  }
+
+  //   滚动条缓慢滚动
+  function scrollSlowly(speed, msec, x) {
+      //每次调用该函数，先清一遍定时器，以防出现定时器叠加情况
+      clearInterval(timer);
+      //产生点击事件是首先判断一下是向上还是向下滚动
+      var distance = window.pageYOffset;
+      //如果滚动条的位置在制定dom元素的下方，也就是需要向上滚动时：speed取负值，向上滚动，反之取正值，向上滚动
+      speed = distance <= x ? speed : -speed
+
+      var timer = setInterval(function() {
+          window.scrollBy(0, speed); //每msec滚动speed的距离，可根据需求微调
+      }, msec);
+
+      //判断何时停止
+      window.onscroll = function() {
+          var distance1 = window.pageYOffset;
+          var y = distance1 - x;
+          //   console.log(y)
+          //   console.log(distance1)
+          if (y >= -100 && y <= 100) { //设置停止定时器的区间
+              clearInterval(timer);
+          }
+      }
+  }
+
+  // 显示toast
+  function showToast(msg, duration) {
+      duration = isNaN(duration) ? 3000 : duration;
+      var m = document.createElement('div');
+      m.innerHTML = msg;
+      m.style.cssText = "width:60%; min-width:180px; font-size:30px; background:#000; opacity:1; height: 50px; padding: 10px 0; color:#fff; line-height:50px; text-align:center; border-radius:4px; position:fixed; top:80%; left:20%; z-index:999999;";
+      document.body.appendChild(m);
+      setTimeout(function() {
+          var d = 0.5;
+          m.style.webkitTransition = '-webkit-transform ' + d + 's ease-in, opacity ' + d + 's ease-in';
+          m.style.opacity = '0';
+          setTimeout(function() {
+              document.body.removeChild(m)
+          }, d * 1000);
+      }, duration);
+  }
+
+  // 隐藏div 显示textarea进行编辑
+  function setMainMsg() {
+      my$("mainContent-div").className = "display-none"
+      my$("mainContent-textarea").className = ""
+  }
+  // 将textarea内容同步到div进行显示
+  function saveMainMsg() {
+      mainContent_div.className = ""
+      mainContent_textarea.className = "display-none";
+      //   console.log(mainContent_div.innerText)
+      //   console.log(mainContent_textarea.value);
+      mainContent_div.innerText = my$("mainContent-textarea").value;
+      //   console.log(mainContent_div.innerText)
+  }
+  // 隐藏div 显示textarea进行编辑
+  function setDetailMsg() {
+      detailContent_div.className = "display-none"
+      detailContent_textarea.className = ""
+  }
+  // 将textarea内容同步到div进行显示
+  function saveDetailMsg() {
+      detailContent_div.className = ""
+      detailContent_textarea.className = "display-none";
+      detailContent_div.innerText = detailContent_textarea.value;
+  }
+
+  // 保存成png格式的图片
+  function saveAsPNG(canvas) {
+      return canvas.toDataURL("image/png");
+  }
+
+  function downLoad(url) {
+      var oA = document.createElement("a");
+      oA.download = fileName.value; // 设置下载的文件名，默认是'下载'
+      oA.href = url;
+      document.body.appendChild(oA);
+      oA.click();
+      oA.remove(); // 下载之后把创建的元素删除
+  }
+
 
   /**
    * 绑定长按事件，同时支持绑定点击事件
@@ -92,7 +228,7 @@
               setEvent(dom[i])
           }
       } else {
-          setEvent(dom)
+          setEvent(dom);
       }
   }
 
@@ -122,11 +258,12 @@
 
 
   // 随机背景图
-  var bgSrc = 'http://pic.tsmp4.net/api/fengjing/img.php' // 随机图片api
+  var bgSrc = 'https://source.unsplash.com/random/600x900' // 随机图片api
   var avatarSrc = 'https://source.unsplash.com/random/500x500'
       // 背景图
   var bgFile = my$("bg-ipt");
   var bgPre = my$("bg-pre");
+  var cover = my$("cover");
   // 大头像
   var avatarFileBig = my$("ava-ipt-b");
   var bgPreBig = my$("avatar-pre-b");
@@ -134,19 +271,26 @@
   var avatarFileSmall = my$("ava-ipt-s");
   var bgPreSmall = my$("avatar-pre-s");
   // 文本框
-  var mainContent = my$("mainContent");
-  var detailContent = my$("detailContent");
+  var detailContent_div = my$("detailContent-div");
+  var mainContent_div = my$("mainContent-div");
+  var detailContent_textarea = my$("detailContent-textarea");
+  var mainContent_textarea = my$("mainContent-textarea");
   var nickNameB = my$("nickName-b");
   var nickNameS = my$("nickName-s");
   // 新动态
   var clear = my$("clear");
+  // 底部
+  var bottom = my$("bottom");
+  var fileName = my$("fileName");
+
 
   // 主内容变动
-  mainContent.onchange = function() {
+  mainContent_textarea.onchange = function() {
+          //   console.log("123213");
           storageData();
       }
       // 详细内容变动
-  detailContent.onchange = function() {
+  detailContent_textarea.onchange = function() {
           storageData();
       }
       // 昵称变动
@@ -176,14 +320,17 @@
   // 判断是否有数据
   if (localStorage.mainContent && localStorage.detailContent) {
       // 如果本地有数据
-      // console.log(localStorage.mainContent);
-      // console.log(localStorage.detailContent);
-      mainContent.value = localStorage.mainContent;
-      detailContent.value = localStorage.detailContent;
+      //   console.log(localStorage.mainContent);
+      //   console.log(localStorage.detailContent);
+      mainContent_textarea.value = localStorage.mainContent;
+      detailContent_textarea.value = localStorage.detailContent;
+      mainContent_div.innerText = localStorage.mainContent;
+      detailContent_div.innerText = localStorage.detailContent;
+      fileName.value = localStorage.fileName;
   } else {
       // 如果本地没有数据
-      mainContent.value = 'XXXX学院 \nXXXXXXX-XX XXXX \n已完成“青年大学习”网上主题团课第五季第八期的课程';
-      detailContent.value = '我完成了“青年大学习”网上主题团课第五季第八期的课程，你也来试试吧';
+      mainContent_textarea.value = 'XXXX学院 \nXXXXXXX-XX XXXX \n已完成“青年大学习”网上主题团课第五季第八期的课程';
+      detailContent_textarea.value = '我完成了“青年大学习”网上主题团课第五季第八期的课程，你也来试试吧';
   }
   //本地是否有背景图的数据
   if (localStorage.bgUrl) {
@@ -204,4 +351,8 @@
   if (localStorage.nickNameB) {
       nickNameB.value = localStorage.nickNameB;
       nickNameS.value = localStorage.nickNameB;
-  }
+  };
+
+  //   getBase64(bgPreSmall.src, bgPreSmall);
+  getBase64("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=561772399,1254043832&fm=11&gp=0.jpg", cover);
+  //   getBase64(bgPre.src, src);
