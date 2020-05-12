@@ -1,0 +1,281 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  background-color: #fff;
+  min-height: 100vh;
+}
+
+html {
+  font-size: 62.5%;
+  overflow: inherit;
+  background: url(http://pic1.win4000.com/wallpaper/d/59014d3e879e7.jpg) no-repeat fixed;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+input,
+textarea {
+  border: none;
+  background: none;
+  width: 100%;
+  outline: none;
+}
+
+#max-control {
+  max-width: 45rem;
+  margin: 0 auto;
+  background-color: #fff;
+  min-height: 100vh;
+}
+
+/*背景图*/
+#bg-pre {
+  background: #454545 url(https://blog.powerrain.cn/img/tag.jpg) no-repeat center;
+  background-size: cover;
+  display: inline-block;
+  height: 27rem;
+  width: 100%;
+}
+
+#bg-ipt {
+  display: inline-block;
+  /*让输入框转为块级元素，否则不能设置宽高*/
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  /*让输入框高一点*/
+  opacity: 0;
+  /*透明度为0*/
+}
+
+/*大网名*/
+.name-b {
+  font-size: 1.6rem;
+  position: absolute;
+  top: 22rem;
+  right: 12rem;
+  color: #fff;
+  width: 60rem;
+  text-align: right;
+}
+
+/*头像*/
+#avatar-pre-b {
+  background: #454545 url(http://suo.im/5mIw26) no-repeat center;
+  background-size: cover;
+  height: 7rem;
+  width: 7rem;
+  border-radius: 0.5rem;
+  position: absolute;
+  right: 3rem;
+  margin-top: -5rem;
+  box-shadow: 0 0 5px #fff;
+}
+
+#ava-ipt-b,
+#ava-ipt-s {
+  opacity: 0;
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+}
+
+/*mid begin*/
+.mid {
+  margin-top: 3rem;
+  background-color: #fff;
+}
+
+.line {
+  width: 90%;
+  margin-left: 5%;
+  height: 1px;
+  background-color: #cbc1c1;
+}
+
+.mid span {
+  display: inline-block;
+  font-size: 1.4rem;
+  padding: 1rem 0 1rem 6rem;
+}
+
+/*body*/
+.body {
+  margin-top: 1.5rem;
+  margin-left: 6rem;
+  background-color: #fff;
+}
+
+.body .name-s {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.body textarea {
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+  height: 8rem;
+  line-height: 2rem;
+  width: 90%;
+  background: none;
+  z-index: 1454545;
+  overflow: hidden;
+}
+
+/*小头像*/
+#avatar-pre-s {
+  background: #454545 url(http://suo.im/5mIw26) no-repeat center;
+  background-size: cover;
+  background-color: #ddd;
+  height: 4rem;
+  width: 4rem;
+  border-radius: 3px;
+  position: absolute;
+  left: 1rem;
+}
+
+/*推送*/
+.article {
+  background-color: #fff;
+}
+
+/*封面*/
+.article .cover {
+  background: #ddd url(https://www.chenmo1212.site/images/study/8.png) no-repeat top center;
+  background-size: cover;
+  height: 4.5rem;
+  width: 4.5rem;
+  position: absolute;
+}
+
+.article .content {
+  background-color: #eee;
+  height: 4.5rem;
+  width: 23.5rem;
+  margin-left: 5rem;
+}
+
+.article textarea {
+  margin-left: 4px;
+  line-height: 2rem;
+  font-size: 1.2rem;
+  width: 110%;
+  height: 110px;
+  -webkit-transform-origin-x: 0;
+  -webkit-transform: scale(0.90);
+}
+
+.delete {
+  font-size: 1.4rem;
+  border: none;
+  margin-top: 0.5rem;
+  -webkit-transform-origin-x: 0;
+  -webkit-transform: scale(0.90);
+}
+
+.delete i {
+  font-style: normal;
+  color: blue;
+}
+
+.point {
+  position: absolute;
+  right: 2rem;
+  margin-top: -2rem;
+  background-color: #eee;
+  padding: 3px 3px;
+  border-radius: 3px;
+  height: 0.7rem;
+}
+
+.point span {
+  display: inline-block;
+  height: 0.5rem;
+  width: 0.5rem;
+  background-color: #bbb;
+  border-radius: 50%;
+  margin-bottom: 0.7rem;
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  background-color: #eeeeee;
+  margin: 0 auto;
+  margin: 1rem 0;
+}
+
+.motto p {
+  width: 90%;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.modal {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.zhezhao {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  background: #454545;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+}
+
+.tankuang {
+  position: absolute;
+  background: #fff;
+  width: 70%;
+  height: auto;
+  min-height: 20rem;
+  border-radius: 5px;
+  top: 20%;
+  left: 15%;
+  padding-bottom: 7rem;
+}
+
+.modal #header {
+  height: 2rem;
+  font-size: 1.6rem;
+  text-align: center;
+  padding-top: 1rem;
+}
+
+.modal #header-right {
+  position: absolute;
+  width: 9rem;
+  height: 3.6rem;
+  line-height: 3.6rem;
+  border-radius: 5px;
+  background: #e7e9ef;
+  color: #444;
+  bottom: 20px;
+  font-size: 1.4rem;
+  left: 50%;
+  text-align: center;
+  margin-left: -4.5rem;
+  cursor: pointer;
+}
+
+.modal .content {
+  font-size: 1.4rem;
+  padding: 0px 2rem 0 3rem;
+}
+
+ol>li {
+  margin-top: 10px;
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>青年大学习</title>
+  <link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body id="max-control">
+  <div class="container">
+    <!-- header begin -->
+    <div class="header">
+      <!-- 背景 -->
+      <div class="bg-img" id="bg-pre">
+        <!-- accept: 可以接受gif,jpeg,png,jpg的格式 -->
+        <input type="file" name="bg" id="bg-ipt" value="" accept="image/gif, image/jpeg, image/png, image/jpg">
+      </div>
+      <!-- 大头像 -->
+      <input type="text" name="大网名" value="余生少年" class="name name-b" id='nickName-b'>
+      <div id="avatar-pre-b">
+        <input type="file" name="avatar-b" id="ava-ipt-b" value="" accept="image/gif, image/jpeg, image/png, image/jpg">
+      </div>
+    </div>
+
+    <!-- mid begin -->
+    <div class="mid">
+      <div class="line line1"></div>
+      <span class="new" id="longPress">朋友的新动态</span>
+      <div class="line line2"></div>
+    </div>
+
+    <div class="body">
+      <!-- 小头像 -->
+      <div id="avatar-pre-s">
+        <input type="file" name="avatar-s" id="ava-ipt-s" value="" accept="image/gif, image/jpeg, image/png, image/jpg">
+      </div>
+      <!-- 内容 -->
+      <input type="text" name="" value="余生少年" class="name name-s" id='nickName-s'>
+      <div class="tit">
+        <textarea rows="4" cols="" id="mainContent" style="margin: 0px;width: 283px;height: 80px;">
+        	XXXX学院 &#10;XXXXXXX-XX XXXX &#10;已完成“青年大学习”网上主题团课第八季第八期的课程</textarea>
+      </div>
+
+      <div class="article">
+        <div class="cover"></div>
+        <div class="content">
+          <textarea rows="4" cols="" id="detailContent">满分！我完成了“青年大学习”网上主题团课第八季第八期的课程，你也来试试吧</textarea>
+        </div>
+      </div>
+
+      <p class="delete" onclick="alert('我删除你个头')">1分钟前 &nbsp;<i>删除</i></p>
+
+      <div class="point">
+        <span></span>
+        <span></span>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- 小头像 -->
+      <div id="avatar-pre-s">
+        <img style="height: 4rem;width: 4rem;border-radius: 3px;" src="https://shouyou.3dmgame.com/uploadimg/ico/2017/0729/1501308877476697.jpg" alt="">
+      </div>
+        <!-- 内容 -->
+      <div class="name name-s" id='nickName-s'><a href="http://www.hitokoto.cn/" style="text-decoration: none; color: #454545;" target="_Blank">一言</a></div>
+      <div class="motto" onclick="getHitokoto()">
+        <p id="hitokoto">:D 获取中...</p>
+        <p id="hitokoto-from" style="text-align: right;">:D 获取中...</p>
+      </div>
+    </div>
+    <!-- 模式框 -->
+    <div class="modal" id='modal'>
+      <div class="zhezhao"></div>
+      <div class="tankuang">
+        <div id="header">
+            <span>说明</span>
+        </div>
+        <div class="content">
+            <ol>
+                <li>本网站是为了懒人们服务的，由于学校经常需要共青团学习的截图，因此，随手做了一个网站，方便大家使用。</li>
+                <li>该网站的背景图和头像是随机生成的，并且支持手机相册上传！</li>
+                <li>网站内所有的文字均支持更改！</li>
+                <li>网站支持本地保存，相册上传的图片和更改的文字将会在本地保存！</li>
+                <li>点击“朋友的新动态”即可清除本地缓存。</li>
+                <li>注意：该网站只是可以不用转发朋友圈，务必看完视频答题后再使用该网站，别给你们团支书找麻烦。</li>
+            </ol>
+        </div>
+        <div id="header-right" onclick="hidder()">我知道了</div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="js/main.js"></script>
+<!-- 现代写法，推荐(不支持 IE) -->
+<script>
+  const hitokoto = document.getElementById('hitokoto');
+  const hitokoto_from = document.getElementById('hitokoto-from');
+  getHitokoto()
+
+  function getHitokoto() {
+    fetch('https://v1.hitokoto.cn')
+      .then(response => response.json())
+      .then(data => {
+        hitokoto.innerText = data.hitokoto;
+        hitokoto_from.innerText = "——" + data.from;
+      })
+      .catch(err => console.error(err));
+  }
+
+  var timeId = setInterval(function() {
+    getHitokoto()
+  }, 8000)
+</script>
+
+</html>
