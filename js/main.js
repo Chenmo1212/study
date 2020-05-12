@@ -158,12 +158,27 @@ var clear = my$("clear");
 
 // 主内容变动
 mainContent.onchange = function() {
+  var chapter1 = mainContent.value.match(/团课(\S*)的课程/)[1];
+  var chapter2 = detailContent.value.match(/团课(\S*)的课程/)[1];
+
+  console.log(chapter1 != chapter2);
+  if(chapter1 != chapter2){
+      detailContent.value = detailContent.value.replace(chapter2, chapter1);
+  }
+  console.log(detailContent.value);
   storageData();
 }
 // 详细内容变动
 detailContent.onchange = function() {
+  var chapter1 = mainContent.value.match(/团课(\S*)的课程/)[1];
+  var chapter2 = detailContent.value.match(/团课(\S*)的课程/)[1];
+
+  if(chapter1 != chapter2){
+      mainContent.value.replace(chapter1, chapter2);
+  }
   storageData();
 }
+
 // 昵称变动
 nickNameB.onchange = function() {
   // console.log(nickNameB.value);

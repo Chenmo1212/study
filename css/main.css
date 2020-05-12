@@ -35,9 +35,13 @@ textarea {
   min-height: 100vh;
 }
 
+.container {
+  background-color: #fff;
+}
+
 /*背景图*/
 #bg-pre {
-  background: #454545 url(https://blog.powerrain.cn/img/tag.jpg) no-repeat center;
+  background: #454545 url(https://study.chenmo1212.site/0901.png) no-repeat center;
   background-size: cover;
   display: inline-block;
   height: 27rem;
@@ -142,13 +146,18 @@ textarea {
 }
 
 /*推送*/
+.content-main {
+  overflow: hidden;
+}
+
 .article {
   background-color: #fff;
+  overflow: hidden;
 }
 
 /*封面*/
 .article .cover {
-  background: #ddd url(https://www.chenmo1212.site/images/study/8.png) no-repeat top center;
+  background: #ddd url(https://study.chenmo1212.site/0901.png) no-repeat top center;
   background-size: cover;
   height: 4.5rem;
   width: 4.5rem;
@@ -167,7 +176,6 @@ textarea {
   line-height: 2rem;
   font-size: 1.2rem;
   width: 110%;
-  height: 110px;
   -webkit-transform-origin-x: 0;
   -webkit-transform: scale(0.90);
 }
@@ -278,4 +286,8 @@ textarea {
 
 ol>li {
   margin-top: 10px;
+}
+
+.motto {
+  padding-bottom: 20px;
 }
