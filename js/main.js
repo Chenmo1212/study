@@ -13,8 +13,6 @@ var bgSrc = 'https://api.ixiaowai.cn/gqapi/gqapi.php' //
 // var avatarSrc = 'https://acg.toubiec.cn/random' // 二次元
 var avatarSrc = 'https://api.ixiaowai.cn/api/api.php' // 二次元
 
-
-
 //   函数开始
 
 // 根据id获取元素
@@ -78,8 +76,11 @@ function hidder() {
   my$('pic_modal').style.display = "none";
 
   var parent = my$('pic_content');
-  console.log(parent);
-  if(parent.children.length) parent.removeChild(parent.children[0]);
+  // console.log(parent);
+  if (parent.children.length) {
+    parent.removeChild(parent.children[0]);
+    showToast("如果觉得不错的话，记得进GitHub star我哦~",3000);
+  }
 }
 
 function showPicModal() {
@@ -88,12 +89,28 @@ function showPicModal() {
 
 function takeScreenshot() {
   my$('tip_modal').style.display = "none";
+  my$('loading').style.display = "";
   html2canvas(my$("container")).then(function(canvas) {
     dpi: window.devicePixelRatio * 2,
     // document.body.appendChild(canvas);
     // Canvas2Image.saveAsJPEG(canvas, canvas.width, canvas.height)
     Canvas2Image.convertToImage(canvas, canvas.width, canvas.height)
   });
+}
+
+// 显示toast       // showToast("恭喜您！请求数据成功！请求数据成功！",3000);
+function showToast(msg,duration){
+    duration=isNaN(duration)?3000:duration;
+    var m = document.createElement('div');
+    m.innerHTML = msg;
+    m.style.cssText="width:80%; min-width:180px; background:#000; opacity:0.8; height:auto;min-height: 30px; color:#fff; line-height:30px; text-align:center; border-radius:4px; position:fixed; top:80%; left:20%; z-index:999999;";
+    document.body.appendChild(m);
+    setTimeout(function() {
+        var d = 0.5;
+        m.style.webkitTransition = '-webkit-transform ' + d + 's ease-in, opacity ' + d + 's ease-in';
+        m.style.opacity = '0';
+        setTimeout(function() { document.body.removeChild(m) }, d * 1000);
+    }, duration);
 }
 
 /**

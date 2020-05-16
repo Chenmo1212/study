@@ -157,7 +157,7 @@ a:hover {
 }
 
 .motto-avatar {
-  background: #454545 url(../images/yiyan.jpg) center center no-repeat;
+  background: #454545 url(https://study.chenmo1212.site/images/yiyan.jpg) center center no-repeat;
   background-size: cover;
   height: 4rem;
   width: 4rem;
@@ -177,7 +177,7 @@ a:hover {
 /*封面*/
 .article .cover {
   position: absolute;
-  background: #ddd url(../images/0901.png) center center no-repeat;
+  background: #ddd url(https://study.chenmo1212.site/images/0901.png) center center no-repeat;
   background-size: cover;
   height: 4.5rem;
   width: 4.5rem;
@@ -266,7 +266,9 @@ a:hover {
   opacity: 0.5;
 }
 
-.tankuang {
+.modal .tankuang,
+.pic_modal .tankuang,
+.tip_modal .tankuang {
   position: absolute;
   background: #fff;
   width: 70%;
@@ -276,6 +278,19 @@ a:hover {
   top: 20%;
   left: 15%;
   padding: 1rem 0 7rem;
+}
+
+.loading .tankuang {
+  position: absolute;
+  background: #fff;
+  /* width: 70%; */
+  padding: 0 4rem;
+  /* height: auto; */
+  /* min-height: 20rem; */
+  border-radius: 5px;
+  top: 30%;
+  left: 50%;
+  margin-left: -6rem;
 }
 
 .tip_modal .tankuang {
@@ -366,4 +381,40 @@ ol>li {
   bottom: 0;
   left: 50%;
   margin-left: -13rem;
+}
+
+.sk-spinner-pulse {
+  width: 40px;
+  height: 40px;
+  margin: 40px auto;
+  background-color: #333;
+  border-radius: 100%;
+  -webkit-animation: sk-pulseScaleOut 1s infinite ease-in-out;
+  animation: sk-pulseScaleOut 1s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-pulseScaleOut {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes sk-pulseScaleOut {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 0;
+  }
 }

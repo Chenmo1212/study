@@ -61,7 +61,8 @@ var Canvas2Image = function() {
 		console.log("GET IT!");
 		document.getElementById("pic_content").appendChild(img);
 		document.getElementById("pic_modal").style.display = "";
-		console.log(document.getElementById("pic_modal"));
+		document.getElementById('loading').style.display = "none";
+		// console.log(document.getElementById("pic_modal"));
     return img;
   }
 
@@ -94,7 +95,6 @@ var Canvas2Image = function() {
   }
 
   function makeURI(strData, type) {
-    console.log('type:-------------------------------------', type)
     return 'data:' + type + ';base64,' + strData;
   }
 

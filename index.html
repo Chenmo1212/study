@@ -39,8 +39,7 @@
       <!-- 内容 -->
       <input type="text" name="" value="余生少年" class="name name-s" id='nickName-s'>
       <div class="content-main">
-        <textarea rows="4" cols="" id="mainContent" style="margin: 0px;width: 90%;height: 80px;">
-        	XXXX学院 &#10;XXXXXXX-XX XXXX &#10;已完成“青年大学习”网上主题团课第八季第八期的课程</textarea>
+        <textarea rows="4" cols="" id="mainContent" style="margin: 0px;width: 90%;height: 80px;">XXXX学院 &#10;XXXXXXX-XX XXXX &#10;已完成“青年大学习”网上主题团课第八季第八期的课程</textarea>
       </div>
 
       <div class="article">
@@ -60,12 +59,13 @@
       <div class="divider"></div>
 
       <!-- 一言小头像 -->
-      <div class="motto-avatar"></div>
+      <div class="motto-avatar" onclick="clickme()"></div>
       <!-- 内容 -->
       <div class="name name-s" id='nickName-s'><a href="http://www.hitokoto.cn/" style="text-decoration: none; color: #454545;" target="_Blank">一言</a></div>
       <div class="motto" onclick="getHitokoto()">
         <!-- <p id="hitokoto">:D 获取中...</p> -->
-        <p id="hitokoto">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p id="hitokoto">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         <p id="hitokoto-from" style="text-align: right;">:D 获取中...</p>
       </div>
     </div>
@@ -112,15 +112,25 @@
           <span>说明</span>
         </div>
         <div class="content">
-          <ul style="list-style: none; margin-top: 2rem;">
-            <li>头像和背景使用随机图片时生成的图片将无法显示，确定要继续吗？</li>
-          </ul>
+          <ol style="margin-top: 2rem;">
+            <li>头像和背景使用<span style="color: #f56c6c;">随机图片</span>时生成的图片将<span style="color: #f56c6c;">无法显示</span></li>
+            <li>您可以通过<span style="color: #f56c6c;">上传本地图片</span>使图片正常显示。</li>
+            <li>若坚持使用网络图片，您可以通过<span style="color: #f56c6c;">截图</span>的方式进行保存图片。</li>
+          </ol>
         </div>
         <div class="btn">
           <span onclick="hidder()">算了</span>
           <span onclick="takeScreenshot()">继续</span>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- 生成图片提示模式框 -->
+  <div class="loading" id='loading' style="display: none">
+    <div class="zhezhao"></div>
+    <div class="tankuang" id="tankuang">
+      <div class="sk-spinner sk-spinner-pulse"></div>
     </div>
   </div>
 
@@ -153,6 +163,27 @@
   var timeId = setInterval(function() {
     getHitokoto()
   }, 8000)
+
+
+  function showToast(msg, duration) {
+    duration = isNaN(duration) ? 3000 : duration;
+    var m = document.createElement('div');
+    m.innerHTML = msg;
+    m.style.cssText = "width:80%; min-width:180px; max-width:360px;background:#000; opacity:0.8; height:auto;min-height: 30px; color:#fff; line-height:30px; text-align:center; border-radius:4px; position:fixed; top:80%; left:50%;margin-left: -40%; z-index:999999;";
+    document.body.appendChild(m);
+    setTimeout(function() {
+      var d = 0.1;
+      m.style.webkitTransition = '-webkit-transform ' + d + 's ease-in, opacity ' + d + 's ease-in';
+      m.style.opacity = '0';
+      setTimeout(function() {
+        document.body.removeChild(m)
+      }, d * 1000);
+    }, duration);
+  }
+
+  function clickme() {
+    showToast("恭喜您！请求数据成功！请求数据成功！", 5000);
+  }
 </script>
 
 </html>
