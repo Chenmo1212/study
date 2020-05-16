@@ -84,6 +84,8 @@ function takeScreenshot() {
   my$('pic_modal').style.display = "none";
   html2canvas(my$("container")).then(function(canvas) {
     document.body.appendChild(canvas);
+    console.log(canvas.height)
+    console.log(canvas.width)
   });
 }
 

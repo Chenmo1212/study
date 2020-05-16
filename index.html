@@ -50,7 +50,7 @@
         </div>
       </div>
 
-      <p class="delete" id="longPress">1分钟前 &nbsp;<i>删除</i></p>
+      <p class="delete">1分钟前 &nbsp;<i id="longPress">删除</i></p>
 
       <div class="point">
         <span></span>
@@ -64,7 +64,8 @@
       <!-- 内容 -->
       <div class="name name-s" id='nickName-s'><a href="http://www.hitokoto.cn/" style="text-decoration: none; color: #454545;" target="_Blank">一言</a></div>
       <div class="motto" onclick="getHitokoto()">
-        <p id="hitokoto">:D 获取中...</p>
+        <!-- <p id="hitokoto">:D 获取中...</p> -->
+        <p id="hitokoto">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         <p id="hitokoto-from" style="text-align: right;">:D 获取中...</p>
       </div>
     </div>
@@ -108,9 +109,10 @@
       </div>
     </div>
   </div>
+
   <!-- Footer -->
-  <footer id="footer" style="background-color: #fff;position: absolute;bottom: -30px;z-index: 10;width: 100%;padding: 10px 0;">
-    <p style="text-align: center; font-size: 1.2rem;">&copy;<a href="https://chenmo1212.site">ChenMo</a> | <a href="http://beian.miit.gov.cn/">鄂ICP备19020558号</a> | <a href="https://github.com/Chenmo1212/study">Github</a>.</p>
+  <footer id="footer">
+    <p style="text-align: center;font-size: 12px;"> &copy; <a href="https://chenmo1212.site">ChenMo</a> | <a href="http://beian.miit.gov.cn/">鄂ICP备19020558号</a> | <a href="https://github.com/Chenmo1212/study">Github</a>.</p>
   </footer>
 </body>
 <script src="https://cdn.bootcdn.net/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
@@ -127,6 +129,8 @@
       .then(data => {
         hitokoto.innerText = data.hitokoto;
         hitokoto_from.innerText = "——" + data.from;
+        // console.log(document.getElementById("container").clientHeight)
+        // console.log(window.screen.height)
       })
       .catch(err => console.error(err));
   }
