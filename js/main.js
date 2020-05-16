@@ -103,7 +103,7 @@ function showToast(msg,duration){
     duration=isNaN(duration)?3000:duration;
     var m = document.createElement('div');
     m.innerHTML = msg;
-    m.style.cssText="width:80%; min-width:180px; background:#000; opacity:0.8; height:auto;min-height: 30px; color:#fff; line-height:30px; text-align:center; border-radius:4px; position:fixed; top:80%; left:20%; z-index:999999;";
+    m.style.cssText="width:80%; min-width:180px; background:#000; opacity:0.8; height:auto;min-height: 30px; color:#fff; line-height:30px; text-align:center; border-radius:4px; position:fixed; top:80%; left:50%;margin-left: -40%; z-index:999999;";
     document.body.appendChild(m);
     setTimeout(function() {
         var d = 0.5;
