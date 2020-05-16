@@ -93,6 +93,15 @@ a:hover {
   box-shadow: 0 0 5px #fff;
 }
 
+.camera img {
+  display: inline-block;
+  height: 2.5rem;
+  width: 2.5rem;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
 #ava-ipt-b,
 #ava-ipt-s {
   opacity: 0;
