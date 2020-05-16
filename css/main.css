@@ -29,7 +29,7 @@ textarea {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: none!important;
   color: #000;
 }
 
@@ -42,6 +42,7 @@ a:hover {
   margin: 0 auto;
   background-color: #fff;
   min-height: 100vh;
+  position: relative;
 }
 
 .container {
