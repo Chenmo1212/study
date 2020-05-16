@@ -82,7 +82,7 @@
             <li>网站内所有的文字均支持更改！</li>
             <li>网站支持本地保存，相册上传的图片和更改的文字将会在本地保存！</li>
             <li>长按“删除”即可清除本地缓存。</li>
-            <li>注意：该网站只是可以不用转发朋友圈，务必看完视频答题后再使用该网站，别给你们团支书找麻烦。</li>
+            <li>注意：该网站只是可以不用转发朋友圈，<span style="color: #f56c6c;">务必进入公众号签到后再使用该网站</span>，别给你们团支书找麻烦。</li>
           </ol>
         </div>
         <div id="header-right" onclick="hidder()">我知道了</div>
@@ -102,12 +102,16 @@
           </ul>
         </div>
         <div class="btn">
-            <span onclick="hidder()">算了</span>
-            <span onclick="takeScreenshot()">继续</span>
+          <span onclick="hidder()">算了</span>
+          <span onclick="takeScreenshot()">继续</span>
         </div>
       </div>
     </div>
 
+    <!-- Footer -->
+    <footer id="footer" style="position: absolute; bottom: 10px;z-index:10; width: 100%;">
+      <p style="text-align: center; font-size: 1.2rem;">&copy;<a href="https://chenmo1212.site">ChenMo</a> | <a href="http://beian.miit.gov.cn/">鄂ICP备19020558号</a> | <a href="https://github.com/Chenmo1212/study">Github</a>.</p>
+    </footer>
 
   </div>
 </body>
@@ -132,7 +136,6 @@
   var timeId = setInterval(function() {
     getHitokoto()
   }, 8000)
-
 </script>
 
 </html>
