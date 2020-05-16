@@ -90,8 +90,22 @@
       </div>
     </div>
 
-    <!-- 生成图片模式框 -->
+    <!-- 生成图片提示模式框 -->
     <div class="pic_modal" id='pic_modal' style="display: none;">
+      <div class="zhezhao"></div>
+      <div class="tankuang" id="tankuang">
+        <div id="header">
+          <span>请长按保存</span>
+        </div>
+        <div class="content" id="pic_content"></div>
+        <div class="btn">
+          <span onclick="hidder()">关闭</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 生成图片提示模式框 -->
+    <div class="tip_modal" id='tip_modal' style="display: none;">
       <div class="zhezhao"></div>
       <div class="tankuang" id="tankuang">
         <div id="header">
@@ -99,7 +113,7 @@
         </div>
         <div class="content">
           <ul style="list-style: none; margin-top: 2rem;">
-            <li>本功能可以将图片直接下载到您的设备，但目前存在一些未修复的bug，确定要继续吗？</li>
+            <li>头像和背景使用随机图片时生成的图片将无法显示，确定要继续吗？</li>
           </ul>
         </div>
         <div class="btn">
@@ -117,6 +131,7 @@
 </body>
 <script src="https://cdn.bootcdn.net/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
 <script src="js/main.js"></script>
+<script src="js/canvas2image.js"></script>
 <!-- 现代写法，推荐(不支持 IE) -->
 <script>
   const hitokoto = document.getElementById('hitokoto');

@@ -71,21 +71,28 @@ function storageData() {
   // console.log(localStorage.mainContent);
 }
 
+// 隐藏模式框
 function hidder() {
   my$('modal').style.display = "none";
+  my$('tip_modal').style.display = "none";
   my$('pic_modal').style.display = "none";
+
+  var parent = my$('pic_content');
+  console.log(parent);
+  if(parent.children.length) parent.removeChild(parent.children[0]);
 }
 
 function showPicModal() {
-  my$('pic_modal').style.display = "";
+  my$('tip_modal').style.display = "";
 }
 
 function takeScreenshot() {
-  my$('pic_modal').style.display = "none";
+  my$('tip_modal').style.display = "none";
   html2canvas(my$("container")).then(function(canvas) {
-    document.body.appendChild(canvas);
-    console.log(canvas.height)
-    console.log(canvas.width)
+    dpi: window.devicePixelRatio * 2,
+    // document.body.appendChild(canvas);
+    // Canvas2Image.saveAsJPEG(canvas, canvas.width, canvas.height)
+    Canvas2Image.convertToImage(canvas, canvas.width, canvas.height)
   });
 }
 

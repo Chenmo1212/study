@@ -29,7 +29,7 @@ textarea {
 }
 
 a {
-  text-decoration: none!important;
+  text-decoration: none !important;
   color: #000;
 }
 
@@ -73,10 +73,10 @@ a:hover {
 .name-b {
   font-size: 1.6rem;
   position: absolute;
-  top: 22rem;
+  top: 23rem;
   right: 12rem;
   color: #fff;
-  width: 60rem;
+  width: 10rem;
   text-align: right;
 }
 
@@ -246,6 +246,7 @@ a:hover {
   cursor: pointer;
 }
 
+.tip_modal,
 .pic_modal,
 .modal {
   position: absolute;
@@ -277,18 +278,28 @@ a:hover {
   padding: 1rem 0 7rem;
 }
 
-.pic_modal .tankuang {
+.tip_modal .tankuang {
   min-height: auto;
   top: 30%;
   left: 15%;
   padding: 1rem 0;
 }
 
+.pic_modal .tankuang {
+  min-height: auto;
+  top: 3%;
+  left: 5%;
+  width: 90%;
+  padding: 0.5rem 0;
+}
+
 .modal #header,
-.pic_modal #header {
+.pic_modal #header,
+.tip_modal #header {
   height: 2rem;
   font-size: 1.6rem;
   text-align: center;
+  padding-bottom: 0.5rem;
 }
 
 .modal #header-right {
@@ -307,21 +318,35 @@ a:hover {
   cursor: pointer;
 }
 
-.pic_modal .btn {
+.pic_modal .btn,
+.tip_modal .btn {
   padding: 2rem 2rem 1rem 3rem;
   text-align: center;
 }
 
-.pic_modal .btn span {
+.pic_modal .btn {
+  padding: 0.5rem 0 0;
+}
+
+.tip_modal .btn span {
   cursor: pointer;
   padding: 0 3rem;
   font-size: 1.4rem;
 }
 
 .modal .content,
-.pic_modal .content {
+.pic_modal .content,
+.tip_modal .content {
   font-size: 1.4rem;
   padding: 0px 2rem 0 3rem;
+}
+
+.pic_modal .content {
+  padding: 0 1rem 0;
+}
+
+.pic_modal .content img {
+  width: 100%;
 }
 
 ol>li {
@@ -332,13 +357,13 @@ ol>li {
   padding-bottom: 20px;
 }
 
-
-
 #footer {
-  width: 100%;
+  width: 26rem;
   height: 20px;
   line-height: 20px;
   background: #fff;
   position: fixed;
   bottom: 0;
+  left: 50%;
+  margin-left: -13rem;
 }
