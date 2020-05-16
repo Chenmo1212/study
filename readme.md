@@ -6,7 +6,7 @@
 
 ### 预览
 
-https://www.chenmo1212.site/web/study/index.html
+[https://study.chenmo1212.site/](https://study.chenmo1212.site/)
 
 ### 使用说明
 
