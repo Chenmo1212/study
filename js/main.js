@@ -72,8 +72,19 @@ function storageData() {
 }
 
 function hidder() {
-  document.getElementById('modal').style.display = "none";
-  // console.log("1232131231")
+  my$('modal').style.display = "none";
+  my$('pic_modal').style.display = "none";
+}
+
+function showPicModal() {
+  my$('pic_modal').style.display = "";
+}
+
+function takeScreenshot() {
+  my$('pic_modal').style.display = "none";
+  html2canvas(my$("container")).then(function(canvas) {
+    document.body.appendChild(canvas);
+  });
 }
 
 /**
@@ -162,8 +173,8 @@ mainContent.onchange = function() {
   var chapter2 = detailContent.value.match(/团课(\S*)的课程/)[1];
 
   console.log(chapter1 != chapter2);
-  if(chapter1 != chapter2){
-      detailContent.value = detailContent.value.replace(chapter2, chapter1);
+  if (chapter1 != chapter2) {
+    detailContent.value = detailContent.value.replace(chapter2, chapter1);
   }
   console.log(detailContent.value);
   storageData();
@@ -173,8 +184,8 @@ detailContent.onchange = function() {
   var chapter1 = mainContent.value.match(/团课(\S*)的课程/)[1];
   var chapter2 = detailContent.value.match(/团课(\S*)的课程/)[1];
 
-  if(chapter1 != chapter2){
-      mainContent.value.replace(chapter1, chapter2);
+  if (chapter1 != chapter2) {
+    mainContent.value.replace(chapter1, chapter2);
   }
   storageData();
 }

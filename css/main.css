@@ -11,8 +11,8 @@ html {
   font-size: 62.5%;
   overflow: inherit;
   background: url(http://pic1.win4000.com/wallpaper/d/59014d3e879e7.jpg) no-repeat fixed;
-    -webkit-background-size: cover;
-    background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
 }
 
 * {
@@ -41,7 +41,7 @@ textarea {
 
 /*背景图*/
 #bg-pre {
-  background: #454545 url(https://study.chenmo1212.site/0901.png) no-repeat center;
+  background: #454545 url(http://suo.im/5mIw26) no-repeat center;
   background-size: cover;
   display: inline-block;
   height: 27rem;
@@ -120,6 +120,7 @@ textarea {
 .body .name-s {
   font-size: 1.4rem;
   margin-bottom: 1rem;
+  width: 50%;
 }
 
 .body textarea {
@@ -134,15 +135,23 @@ textarea {
 }
 
 /*小头像*/
-#avatar-pre-s {
+#avatar-pre-s,
+.motto-avatar {
   background: #454545 url(http://suo.im/5mIw26) no-repeat center;
   background-size: cover;
-  background-color: #ddd;
   height: 4rem;
   width: 4rem;
   border-radius: 3px;
   position: absolute;
   left: 1rem;
+}
+
+.motto-avatar {
+  background: #454545 url(../images/yiyan.jpg) center center no-repeat;
+  background-size: cover;
+  height: 4rem;
+  width: 4rem;
+  border-radius: 3px;
 }
 
 /*推送*/
@@ -157,11 +166,11 @@ textarea {
 
 /*封面*/
 .article .cover {
-  background: #ddd url(https://study.chenmo1212.site/0901.png) no-repeat top center;
+  position: absolute;
+  background: #ddd url(../images/0901.png) center center no-repeat;
   background-size: cover;
   height: 4.5rem;
   width: 4.5rem;
-  position: absolute;
 }
 
 .article .content {
@@ -176,6 +185,7 @@ textarea {
   line-height: 2rem;
   font-size: 1.2rem;
   width: 110%;
+  height: 4rem;
   -webkit-transform-origin-x: 0;
   -webkit-transform: scale(0.90);
 }
@@ -226,6 +236,7 @@ textarea {
   cursor: pointer;
 }
 
+.pic_modal,
 .modal {
   position: absolute;
   width: 100%;
@@ -253,14 +264,21 @@ textarea {
   border-radius: 5px;
   top: 20%;
   left: 15%;
-  padding-bottom: 7rem;
+  padding: 1rem 0 7rem;
 }
 
-.modal #header {
+.pic_modal .tankuang {
+  min-height: auto;
+  top: 30%;
+  left: 15%;
+  padding: 1rem 0;
+}
+
+.modal #header,
+.pic_modal #header {
   height: 2rem;
   font-size: 1.6rem;
   text-align: center;
-  padding-top: 1rem;
 }
 
 .modal #header-right {
@@ -279,7 +297,18 @@ textarea {
   cursor: pointer;
 }
 
-.modal .content {
+.pic_modal .btn {
+  padding: 2rem 2rem 1rem 3rem;
+  text-align: center;
+}
+
+.pic_modal .btn span {
+  cursor: pointer;
+  padding: 0 3rem;
+}
+
+.modal .content,
+.pic_modal .content {
   font-size: 1.4rem;
   padding: 0px 2rem 0 3rem;
 }
