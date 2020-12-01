@@ -6,7 +6,7 @@
 
 ### 预览
 
-[https://study.chenmo1212.site/](https://study.chenmo1212.site/)
+[https://study.chenmo1212.cn/](https://study.chenmo1212.cn/?from=github)
 
 ### 使用说明
 
